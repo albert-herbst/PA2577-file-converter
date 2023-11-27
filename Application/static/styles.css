@@ -1,0 +1,65 @@
+.button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.2s;
+    cursor: pointer;
+  }
+  
+  .button1 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #04AA6D;
+  }
+  
+  .button1:hover {
+    background-color: #04AA6D;
+    color: white;
+  }
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #0489aa;
+  }
+  
+  .button2:hover {
+    background-color: #0489aa;
+    color: white;
+  }
+  .button3 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #aa4f04;
+  }
+  
+  .button3:hover {
+    background-color: #aa4f04;
+    color: white;
+  }
+
+ body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Set the height to the full viewport height */
+    margin: 0; /* Remove default body margin */
+}
+
+.container {
+    border: 2px solid #04AA6D;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #00cc4e;
+}
