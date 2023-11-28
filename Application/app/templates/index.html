@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script>
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+
+        socket.on('update', function (data) {
+            var updatesList = document.getElementById('updates');
+            var newItem = document.createElement('li');
+            newItem.appendChild(document.createTextNode(data));
+            updatesList.appendChild(newItem);
+        });
+        socket.on('job_progress', function (data) {
+            var progressBar = document.getElementById('conversion_progress');
+            
+
+            // Update the width and text content of the progress bar
+            animateProgressBar(progressBar, data.progress, 200);
+        });
+
+        // JavaScript
+        function animateProgressBar(progressBar, targetWidth, duration) {
+            var startWidth = parseFloat(progressBar.style.width) || 0;
+            var startTime = null;
+
+            function step(timestamp) {
+                if (!startTime) {
+                    startTime = timestamp;
+                }
+
+                var progress = Math.min(1, (timestamp - startTime) / duration);
+                var currentWidth = startWidth + progress * (targetWidth - startWidth);
+
+                progressBar.style.width = currentWidth + '%';
+                progressBar.textContent = Math.round(currentWidth) + '%';
+
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+
+            requestAnimationFrame(step);
+        }
+
+    </script>
+    <div class="container">
+        <h1>Simple File Converter</h1>
+        <ul id="updates"></ul>
+        <button class="button button1">Upload File</button>
+        <button class="button button2">Convert</button>
+        <button class="button button3">Download</button>
+        <div class="w3-blue-grey">
+            <div class="w3-container w3-green w3-center" id="conversion_progress" style="width:0%">0%</div>
+          </div><br>
+    </div>
+</body>
+</html>

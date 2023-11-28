@@ -1,0 +1,20 @@
+version: '3'
+services:
+  frontend:
+    image: converter-app/application:latest
+    volumes:
+      - ./Application/app:/app
+    ports:
+      - "5000:5000"
+    networks:
+      - converter_net
+
+
+  converter-service:
+    image: converter-app/converter_service:latest
+    volumes:
+      - ./Converter_Service/app:/app
+    networks:
+      - converter_net
+networks:
+  converter_net:
