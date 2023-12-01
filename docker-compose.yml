@@ -1,7 +1,7 @@
 version: '3'
 services:
   frontend:
-    image: converter-app/application:latest
+    image: albh/converter-app:application
     volumes:
       - ./Application/app:/app
     ports:
@@ -9,9 +9,8 @@ services:
     networks:
       - converter_net
 
-
   converter-service:
-    image: converter-app/converter_service:latest
+    image: albh/converter-app:converter_service
     volumes:
       - ./Converter_Service/app:/app
     networks:
