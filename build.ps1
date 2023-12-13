@@ -1,6 +1,6 @@
 # Function to build Docker image and tag it
 function BuilDockeImage($directory) {
-    $imageName = "albh/converter-app:" + $directory.ToLower()
+    $imageName = "albh/" + $directory.ToLower() + ":latest"
     
     # Check if Dockerfile exists in the specified directory
     $dockerfilePath = Join-Path $rootDirectory $directory
